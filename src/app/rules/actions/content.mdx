@@ -1,0 +1,95 @@
+import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
+import RollOutcomes from '@/components/RollOutcomes';
+
+<Stack spacing={{xs: 0, md: 2, lg: 8}} direction='row' useFlexGap flexWrap='wrap'>
+  <div style={{flexGrow: 1, maxWidth: 800}}>
+
+    # Overview
+
+    Actions are used when a character wants to do something in a scene and the
+    players are unsure of what the result will be. To preform an action, the player
+    states what their character is trying to accomplish. Then, all relevant tags are
+    added or subtracted which represents the target value.
+
+    Relevant tags can come from anywhere. The character performing the action, other
+    characters involved in the scene either for or against the action, scene tags,
+    or expected difficulty of the action. Work with the players on each action to
+    best understand which tags are applicable.
+
+
+    ## Cultural average
+
+    When a character rolls with a +0 target, that means they are average at their
+    action compared to the cultural expectations. To represent this cultural average
+    all rolls get a +10. If there situations where this cultural norm should not
+    fully apply consider modifying this value.
+
+
+    ## Timing
+
+    How long actions should take usually depends on how tense a scene is. When the
+    outcome of the scene really matters, consider fine grain actions to help add
+    tension to the outcomes. However, when it the outcomes aren't too important it
+    is usually time to zoom out and have actions that result in more at a time.
+
+    Time is handled loosely. In the scene, all characters are acting simultaneously,
+    however, that is difficult to act out without slowing the game down. Instead,
+    encourage your players to work together to come up with creative solutions. If
+    timing of actions is becoming an issue, consider applying one of the optional
+    rules around [time contention](/rules/optional-rules#time-contention).
+
+
+    ## Partial application
+
+    Some tags don't cleanly apply to the action at hand. When that happens, consider
+    how the tag is related to the action with the [tag hierarchy](/rules/tags#hierarchy).
+    If you can justify a wider application of the tag, divide the tag value by the
+    hierarchy ratio and add that value instead.
+
+
+    ## Using relationships
+
+    When two or more characters work together, they can combine their tags to have a
+    chance at a better outcome. The higher their relationship tag value the better
+    they are able to work together. How this works? I dunno, haven't fully worked
+    through the math yet, but consider;
+    - All parties roll or one rolls. Take best outcome?
+    - Only weaker side rolls and adds relationship bonus?
+    - Add a bonus that scales based on value of relationship?  Eg, pros add full value from each, beginners only add a bit, gods add double?
+    - Relationships can also be used against other characters, how does that work?
+
+
+    # Outcomes
+
+    To resolve an action, roll 3d8-3 and compare the result to the target value.
+    How close or far the roll is from the target determines the level of success.
+    The levels of success are:
+    - Yes, and
+    - Yes
+    - Yes, but
+    - Something interesting happens
+    - No, but
+    - No
+    - No, and
+
+    See the graph on this page for more details around the levels of success and
+    expected values based on different targets.
+
+
+    # Common questions/actions
+
+    - discover tags (eg, insight into a character, investigating a scene)
+    - modify tags
+      - give yourself / ally better tags (heal, invigorate, don armour, grow a bond)
+      - give your opponent worse tags (attack, intimidate, steal money from, sow discontent)
+      - modify environment tags (cause a rock slide, burn a building, clean up a river, poison food)
+
+  </div>
+  <div style={{flexGrow: 1, maxWidth: 600, minWidth: 400}}>
+    <RollOutcomes />
+  </div>
+</Stack>
+

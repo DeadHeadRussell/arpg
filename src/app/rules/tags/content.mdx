@@ -1,0 +1,96 @@
+import Divider from '@mui/material/Divider';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+
+import DynamicTable from '@/components/DynamicTable';
+import Table from '@/components/Table';
+
+<Stack spacing={{xs: 0, md: 2, lg: 8}} direction='row' useFlexGap flexWrap='wrap'>
+  <div style={{flexGrow: 1, maxWidth: 800}}>
+    # Overview
+
+    Tags are used to describe the important characteristics of the characters,
+    scenes, objects, or anything else that players might interact with during a
+    game.  These can be physical attributes, conditions, resources or clocks.  The
+    examples section has a collection of tags to help get the creative juices
+    flowing.  However, tags can represent anything; be creative and be dynamic!
+
+    Each tag has a name, a level, and a short description.  The level is a positive
+    integer that describes how much or severe a tag is.  The description should let
+    the players know what the tag is and how it will interact with the other
+    elements of the game.  An example of this might be the tag “Mountainous 10: The
+    terrain in this region is full of mountains, valleys, rivers and steep cliffs.
+    Travelling through this region is difficult.”
+
+    A good way to represent tags is through cards.  Name and level up top, description below.
+
+
+    # Levels
+
+    Each tag has a level that measures how strong the tag is.  This level is used
+    whenever you need to compare tags to each other, or to some expected state, for
+    example, when resolving actions or determining the effects of a condition.  This
+    level ranges from 0-50, however, depending on how it is interacted with, it
+    might be a positive or a negative value.
+
+    At level 50 or above, the tag’s value is beyond our ability to comprehend.
+    While there is nothing stopping you from using higher numbers, feeling the need
+    to is probably a sign that something else is astray.  Consider setting up
+    challenges for players that use different types of tags or retiring characters
+    when there is no challenge left for them.
+
+    The table below shows categories for each 5 levels.  These names are here to
+    help think about how impactful a level is and have no bearing on any gameplay.
+    These categories can be replaced with your own vernacular, or completely ignored
+    if you prefer just using the numbers.
+
+
+    # Hierarchy
+
+    Because of how open tags are to interpretation some might be used more often
+    than others.  Some also might be similar or related to other tags.  The tag
+    hierarchy helps structure tags to give some guidelines when creating tags and
+    resolving actions with tags that partially apply.
+
+    The ratio for a tier can be used to convert between related tags.  Eg, “Short
+    swords 5”, a normal skill, would convert to “Blades 1”, allowing a character to
+    use a different bladed weapon with a level 1 tag.  In most cases this only
+    allows you to convert to higher hierarchy tiers.
+
+    Tags that have a broader hierarchy should be harder to modify.
+    If attributes are used too often or not often enough, work with the other
+    players to modify them to better suit the intent
+  </div>
+  <div style={{flexGrow: 1, maxWidth: 600, minWidth: 400}}>
+    <Typography variant='h5'>Level Labels</Typography>
+    <DynamicTable
+      staticColumns={['Level']}
+      staticRows={[...Array(11).keys()].map(i => [(i * 5).toString()])}
+      tables={[
+        {
+          title: 'Difficulty',
+          columns: ['Label'],
+          rows: ['Noob', 'Dummy', 'Beginner', 'Intermediate', 'Advanced', 'Expert', 'Pro', 'GOAT', 'Super Human', 'Perfection', 'Transcendent'].map(i => [i])
+        },
+        {
+          title: 'Negative Condition',
+          columns: ['Label'],
+          rows: ['Doin\' fine', 'Annoyed', 'Impaired', 'Injured', 'Disabled', 'Barren', 'Lifeless', 'Moribund', 'Kryptonited', 'Imperfect', 'Fallen'].map(i => [i])
+        }
+      ]}
+    />
+
+    <Typography sx={{marginTop: 6}} variant='h5'>Hierarchy Info</Typography>
+    <Table
+      columns={['Tier', 'Ratio', 'Usage Guide']}
+      rows={[
+        ['Broad', '5:1', 'Multiple times a scene'],
+        ['Wide', '2:1', 'Most scenes'],
+        ['Normal', '1:1', 'Every few scenes'],
+        ['Narrow', '1:2', 'Occasionally'],
+        ['Special', '1:5', 'In key moments']
+      ]}
+    />
+  </div>
+</Stack>
+
