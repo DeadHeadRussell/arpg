@@ -11,41 +11,33 @@ import RollOutcomes from '@/components/RollOutcomes';
 
     Actions are used when a character wants to do something in a scene and the
     players are unsure of what the result will be. To preform an action, the player
-    states what their character is trying to accomplish. Then, all relevant tags are
-    added or subtracted which represents the target value.
+    states what their character is trying to accomplish and how their character is
+    going about it.  The group then discusses which tags are relevant and determines
+    a difficulty for the action.  The player then rolls against that difficulty.
+
+
+    ## Relevant tags
 
     Relevant tags can come from anywhere. The character performing the action, other
     characters involved in the scene either for or against the action, scene tags,
-    or expected difficulty of the action. Work with the players on each action to
-    best understand which tags are applicable.
+    modifiers from previous actions, expected difficulty of the action, etc. All players
+    should bring up any tags that they feel apply to the action at hand.
 
-
-    ## Cultural average
-
-    When a character rolls with a +0 target, that means they are average at their
-    action compared to the cultural expectations. To represent this cultural average
-    all rolls get a +10. If there situations where this cultural norm should not
-    fully apply consider modifying this value.
-
-
-    ## Timing
-
-    How long actions should take usually depends on how tense a scene is. When the
-    outcome of the scene really matters, consider fine grain actions to help add
-    tension to the outcomes. However, when it the outcomes aren't too important it
-    is usually time to zoom out and have actions that result in more at a time.
-
-    Time is handled loosely. In the scene, all characters are acting simultaneously,
-    however, that is difficult to act out without slowing the game down. Instead,
-    encourage your players to work together to come up with creative solutions. If
-    timing of actions is becoming an issue, consider applying one of the optional
-    rules around [time contention](/rules/optional-rules#time-contention).
+    However, it is often too overwhelming to list a tag for every single aspect of a
+    scene.  Keep the tags to just the characteristics that stand out and create a
+    single "Difficulty" tag that represents everything else.  The "Difficulty" tag
+    could represent anything from environment factors, cultural expectations,
+    emotional state of the character or even just the gut feeling of the players.
+    If you are uncertain, just say something that feels right as a starting point
+    and adapt as you learn from there.
 
 
     ## Partial application
 
     Some tags don't cleanly apply to the action at hand. When that happens, consider
-    how the tag is related to the action with the [tag hierarchy](/rules/tags#hierarchy).
+    how the tag is related to the action with the [tag hierarchy](/rules/tags#hierarchy)
+    or just a general feeling.  
+
     If you can justify a wider application of the tag, divide the tag value by the
     hierarchy ratio and add that value instead.
 
@@ -54,12 +46,39 @@ import RollOutcomes from '@/components/RollOutcomes';
 
     When two or more characters work together, they can combine their tags to have a
     chance at a better outcome. The higher their relationship tag value the better
-    they are able to work together. How this works? I dunno, haven't fully worked
-    through the math yet, but consider;
-    - All parties roll or one rolls. Take best outcome?
-    - Only weaker side rolls and adds relationship bonus?
-    - Add a bonus that scales based on value of relationship?  Eg, pros add full value from each, beginners only add a bit, gods add double?
-    - Relationships can also be used against other characters, how does that work?
+    they are able to work together.  Decide on which character will make the main roll.
+    Then have each other character roll to determine how well their help actually is.
+    Then modify the roll target of the main roll based on the previous rolls and
+    make the main roll.
+
+    
+    ## Difficulty
+
+    Once all tags are determined, combine them into a single difficulty that the player
+    will roll against.  This difficulty is a number from 0 to 21 where lower is harder.
+    A few good baselines are:
+    - -1: 1 in a million (ok, its actually just 1 in 500, but it sure feels like 1 in a million to the players when it lands)
+    - 4: very hard (4% success)
+    - 8: hard (25% success)
+    - 10: medium (40% success)
+    - 11: average (50% success)
+    - 14: easy (75% success)
+    - 17: very easy (90% success)
+    - 20: can't fail (99% success)
+
+
+    # Timing
+
+    How long actions should take usually depends on how tense a scene is. When the
+    outcome of the scene really matters, consider fine grain actions to help add
+    tension to the outcomes. However, when it the outcomes aren't as stressful it
+    is usually time to zoom out and have actions that result in more at a time.
+
+    Time is handled loosely. In the scene, all characters are acting simultaneously,
+    however, that is difficult to act out without slowing the game down. Instead,
+    encourage your players to work together to come up with creative solutions. If
+    timing of actions is becoming an issue, consider applying one of the optional
+    rules around [time contention](/rules/optional-rules#time-contention).
 
 
     # Outcomes
@@ -81,11 +100,17 @@ import RollOutcomes from '@/components/RollOutcomes';
 
     # Common questions/actions
 
-    - discover tags (eg, insight into a character, investigating a scene)
-    - modify tags
-      - give yourself / ally better tags (heal, invigorate, don armour, grow a bond)
-      - give your opponent worse tags (attack, intimidate, steal money from, sow discontent)
-      - modify environment tags (cause a rock slide, burn a building, clean up a river, poison food)
+    - Discover tags
+      - Examine a character to tell if they are lying
+      - Investigate a room to see how long ago someone was there
+      - Research a blueprint to learn how a device was put together
+      - Watch guards on duty to figure out their weaknesses
+    - Modify tags
+      - Bolster an ally's confidence with a rousing speech
+      - Set a broken bone to improve its healing time
+      - Intimidate an opponent to lower their confidence
+      - Tumble rocks down a hill to make it harder to climb
+      - Burn down a building to destroy evidence
 
   </div>
   <div style={{flexGrow: 1, maxWidth: 600, minWidth: 400}}>

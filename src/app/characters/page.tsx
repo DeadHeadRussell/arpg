@@ -38,6 +38,21 @@ export default () => {
     setCharacter(newCharacter);
   }
 
+  function addArray(key) {
+    setCharacter({
+      ...character,
+      [key]: character[key].concat([{}])
+    });
+      
+  }
+
+  function removeArray(key, index) {
+    setCharacter({
+      ...character,
+      [key]: character[key].filter((_, i) => i != index)
+    });
+  }
+
   console.log(character);
 
   return (
@@ -116,9 +131,10 @@ export default () => {
             multiline
             value={character.relationships[i].openQuestions}
           />
+          <button onClick={() => removeArray('relationships', i)}>X</button>
         </div>
       ))}
-      <button onClick={() => setCharacter({...character, relationships: character.relationships.concat([{}])})}>Add</button>
+      <button onClick={() => addArray('relationships')}>Add</button>
 
       <p>Attributes</p>
       {character.attributes.map((attribute, i) => (
@@ -160,9 +176,10 @@ export default () => {
             multiline
             value={character.attributes[i].source}
           />
+          <button onClick={() => removeArray('attributes', i)}>X</button>
         </div>
       ))}
-      <button onClick={() => setCharacter({...character, attributes: character.attributes.concat([{}])})}>Add</button>
+      <button onClick={() => addArray('attributes')}>Add</button>
 
       <p>Conditions</p>
       <p>Resources</p>

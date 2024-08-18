@@ -1,5 +1,6 @@
 'use client';
 
+import Chip from '@mui/material/Chip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
@@ -113,20 +114,8 @@ export default () => {
   const [chartType, setChartType] = useState('%');
   const theme = useTheme();
 
-  const colourValues = [
-    [-7, theme.palette.success.dark],
-    [-4, theme.palette.success.main],
-    [-1, theme.palette.success.light],
-    [3, theme.palette.secondary.main],
-    [6, theme.palette.error.light],
-    [9, theme.palette.error.main],
-    [10, theme.palette.error.dark]
-  ]
-    .map(v => [v[0] + target, v[1]])
-    .filter(v => v[0] >= 0 && v[0] <= 21);
-
-  const colourThresholds = colourValues.map(v => v[0]);
-  const colours = colourValues.map(v => v[1]);
+  const colourMap = getColourMap(target, theme);
+  const [success, neutral, failure] = getAggregates(dataset, target);
 
   return (
     <div>
@@ -148,23 +137,65 @@ export default () => {
       <BarChart
         layout='horizontal'
         height={500}
+        margin={{top: parseInt(theme.spacing(2))}}
         dataset={dataset}
         xAxis={[{label: '%'}]}
         yAxis={[{
           scaleType: 'band',
           dataKey: 'roll',
-          colorMap: {
-            type: 'piecewise',
-            thresholds: colourThresholds,
-            colors: colours
-          }
+          colorMap: colourMap
         }]}
         series={[{
           dataKey: chartType,
           valueFormatter: v => `${v.toFixed(2)}%`
         }]}
       />
+      <Stack direction='row' spacing={2} useFlexGap alignItems='last baseline'>
+        <Chip label={`Success: ${success}%`} color='success' />
+        <Chip label={`Neutral: ${neutral}%`} color='secondary' />
+        <Chip label={`Failure: ${failure}%`} color='error' />
+      </Stack>
     </div>
   );
 };
+
+function getColourMap(target: number, theme) {
+  const colourValues = [
+    [-6, theme.palette.success.dark],
+    [-3, theme.palette.success.main],
+    [0, theme.palette.success.light],
+    [2, theme.palette.secondary.main],
+    [5, theme.palette.error.light],
+    [8, theme.palette.error.main],
+    [10, theme.palette.error.dark]
+  ]
+    .map(v => [v[0] + target, v[1]])
+    .filter(v => v[0] >= 0);
+
+  const thresholds = colourValues.map(v => v[0]);
+  const colors = colourValues.map(v => v[1]);
+  return {type: 'piecewise', thresholds, colors};
+}
+
+function getAggregates(dataset, target: number) {
+  const success = dataset
+    .filter(row => row.roll < target)
+    .map(row => row['%'])
+    .reduce((total, i) => total + i, 0)
+    .toPrecision(2);
+
+  const neutral = dataset
+    .filter(row => row.roll == target || row.roll == target + 1)
+    .map(row => row['%'])
+    .reduce((total, i) => total + i, 0)
+    .toPrecision(2);
+
+  const failure = dataset
+    .filter(row => row.roll > target + 1)
+    .map(row => row['%'])
+    .reduce((total, i) => total + i, 0)
+    .toPrecision(2);
+  
+  return [success, neutral, failure];
+}
 
